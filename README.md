@@ -43,26 +43,33 @@ Gerenciamento eficiente de estados diferentes: Quando uma classe pode assumir ap
 title: Sistema de Documentos (Prototype)
 ---
 classDiagram
-    Documento <|-- Relatorio
-    Documento <|-- Contrato
+direction TB
     class Documento {
-        +String titulo
-        +String conteudo
-        +clone() Documento
-        +exibirDetalhes() void
+	    +String titulo
+	    +String conteudo
+	    +clone() Documento
+	    +exibirDetalhes() void
     }
+
     class Relatorio {
-        +String autor
-        +clone() Documento
-        +exibirDetalhes() void
+	    +String autor
+	    +clone() Documento
+	    +exibirDetalhes() void
     }
-    note for Relatorio "Clone personalizado (ex: Relatório Financeiro)"
+
     class Contrato {
-        +String nomeCliente
-        +clone() Documento
-        +exibirDetalhes() void
+	    +String nomeCliente
+	    +clone() Documento
+	    +exibirDetalhes() void
     }
-    note for Contrato "Clone específico (ex: Contrato de Compra e Venda)"
+
+	note for Relatorio "Clone personalizado (ex: Relatório Financeiro)"
+	note for Contrato "Clone específico (ex: Contrato de Compra e Venda)"
+
+    Documento --> Relatorio
+    Documento --> Contrato
+
+
 ```
 ## Participantes 
 
@@ -99,8 +106,8 @@ classDiagram
     }
     note for Guerreiro "Personagem com alta defesa e força física"
 
-    Guerreiro <|-- Guerreiro1
-    Guerreiro1 <|-- Guerreiro2
+    Guerreiro --|> Guerreiro1
+    Guerreiro1 --|> Guerreiro2
     class Guerreiro1 {
         +nome: "Thor"
         +nivel: 10
@@ -132,8 +139,8 @@ classDiagram
     }
     note for Mago "Personagem com habilidades mágicas e alto poder de ataque"
 
-    Mago <|-- Mago1
-    Mago1 <|-- Mago2
+    Mago --|> Mago1
+    Mago1 --|> Mago2
     class Mago1 {
         +nome: "Merlin"
         +nivel: 12
